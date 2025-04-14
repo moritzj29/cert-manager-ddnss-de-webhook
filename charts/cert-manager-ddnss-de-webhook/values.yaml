@@ -8,17 +8,34 @@
 # here is recommended.
 groupName: acme.mycompany.com
 
+logLevel: 2
+
 certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
 
 image:
-  repository: mycompany/webhook-image
+  repository: ghcr.io/moritzj29/cert-manager-ddnss-de-webhook
   tag: latest
   pullPolicy: IfNotPresent
 
 nameOverride: ""
 fullnameOverride: ""
+
+clusterIssuer:
+  email: ~
+  production:
+    create: false
+    server: https://acme-v02.api.letsencrypt.org/directory
+    name: ddnss-letsencrypt-prod
+  staging:
+    create: false
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    name: ddnss-letsencrypt-staging
+
+token:
+  value: ~
+  existingSecretName: "" # Secret must have the token in the `token` key
 
 service:
   type: ClusterIP
