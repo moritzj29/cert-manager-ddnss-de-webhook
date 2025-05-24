@@ -41,6 +41,11 @@ func TestGetDomainName(t *testing.T) {
 			DNSName:      "example.ddnss.de.",
 			expectedName: "example.ddnss.de",
 		},
+		{
+			name:         "Domain with multiple subdomains",
+			DNSName:      "test.subdomain.example.ddnss.de.",
+			expectedName: "example.ddnss.de",
+		},
 	}
 
 	for _, tt := range tests {
