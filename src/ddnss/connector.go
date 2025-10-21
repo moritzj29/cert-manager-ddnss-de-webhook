@@ -12,7 +12,7 @@ type ConnectorInterface interface {
 	CleanTXTRecord(ctx context.Context, domain string) (*http.Response, error)
 }
 
-const updateURL = "https://www.ddnss.de/upd.php"
+const updateURL = "https://ddnss.de/upd.php"
 
 type Connector struct {
 	httpClient *http.Client
